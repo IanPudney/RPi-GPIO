@@ -12,20 +12,19 @@
 using namespace std;
 /* GPIO Class
  * Purpose: Each object instantiated from this class will control a GPIO pin
- * The GPIO pin number must be passed to the overloaded class constructor
- * Improved by Ian Pudney
+ * The GPIO pin number must be passed to the class constructor (defaults to GPIO4)
  */
 class gpio
 {
 public:
-    gpio();  // create a GPIO object that controls GPIO4 (default
+    gpio();  // create a GPIO object that controls GPIO4 (default)
     gpio(int pin); // create a GPIO object that controls GPIOx, where x is passed to this constructor
     gpio(int pin, bool direction);
     ~gpio();
     int enable(); // enables GPIO
     int disable(); // disables GPIO
     int setdirection(bool direction); // Set GPIO Direction
-    bool& setval(const bool& val); // Set GPIO Value (output pins)
+    bool& setval(const bool& val); // Set GPIO Value (output pins) (mirrored with operator=)
     bool getval(); // Get GPIO Value (input/ output pins)
     int getnum(); // return the GPIO number associated with the instance of an object
     bool getdirection(); // get direction set by setdirection() function
